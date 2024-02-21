@@ -1,0 +1,35 @@
+.mypageForm {
+	margin: 50px 0;
+}
+.mypageMenu > li {
+	text-align: center;
+	font-size: 2em;
+	padding: 20px 0;
+}
+.mypageMenu > li:hover {
+	color: brown;
+	text-decoration: underline;
+	cursor: pointer;
+}
+.mypageMenu > li > button {
+	font-size: 18px;
+	padding: 10px;
+	border: none;
+	background-color: #83ccc5;
+	transition: 0.5s;
+	border-radius: 5px;
+}
+.mypageMenu > li > button:hover {
+	background-color: #364ea8;
+	transition: 0.5s;
+}
+#deleteMember {
+	cursor: pointer;
+}
+.pwCheckForm {
+	text-align: center;
+	margin-top: 200px;
+}
+.pwCheckForm > form > input {
+	padding: 10px;
+}

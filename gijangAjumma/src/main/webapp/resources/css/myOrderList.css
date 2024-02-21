@@ -1,0 +1,51 @@
+.myOrderList {
+	margin: 20px 0;
+}
+.orderListImg > a > img {
+	width: 300px;
+	height: 250px;
+}
+.orderListContent {
+	width: 700px;
+	height: 250px;
+}
+.orderListContent > ul {
+	padding: 20px;
+}
+.orderListContent > ul > li {
+	padding: 5px 0;
+}
+.orderTitle {
+	font-weight: bold;
+}
+.detailName {
+	color: gray;
+}
+.detailCount {
+	padding: 0 10px;
+	color: gray;
+}
+.deliveryForm {
+	width: 300px;
+	height: 250px;
+	padding: 10px;
+}
+.deliveryForm > p:first-child {
+	text-align: center;
+}
+.deliveryStatus {
+	border: 1px solid #ccc;
+	height: 220px;
+	margin-top: 10px;
+}
+.deliveryStatus > p {
+	padding: 100px;
+}
+.reviewWrite {
+	padding: 20px;
+	color: #83ccc5;
+}
+.reviewWrite > p > a:hover {
+	color: #364ea8;
+	text-decoration: underline;
+}

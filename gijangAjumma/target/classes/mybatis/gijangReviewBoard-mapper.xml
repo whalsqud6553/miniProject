@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+		"//mybatis.org//DTD Mapper 3.0//EN" 
+		"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+		
+<mapper namespace="com.miniproject.repository.GijangReviewBoardDAO">
+	<select id="selectSaleBoardJoinOrder" parameterType="int" resultType="saleboard">
+		select a.*
+			from gijang_SaleBoard a
+			join gijang_OrderList b
+			on a.gijang_SaleBoard_Idx = b.gijang_OrderList_SaleBoardIdx
+				where b.gijang_OrderList_Idx = ${gijang_OrderList_Idx}
+	</select>
+	
+	<insert id="insertReview" parameterType="review">
+		insert into gijang_ReviewBoard
+			(gijang_ReviewBoard_OrderListIdx, gijang_ReviewBoard_Writer, gijang_ReviewBoard_Title,
+			gijang_ReviewBoard_Content, gijang_ReviewBoard_Grade, gijang_ReviewBoard_FileName)
+		values
+			(${gijang_ReviewBoard_OrderListIdx}, #{gijang_ReviewBoard_Writer}, #{gijang_ReviewBoard_Title}, 
+			#{gijang_ReviewBoard_Content}, #{gijang_ReviewBoard_Grade}, #{gijang_ReviewBoard_FileName})
+	</insert>
+	
+<!-- 	<select id="selectReviewList" resultType="review"> -->
+<!-- 		select * from -->
+<!-- 			gijang_ReviewBoard -->
+<!-- 			order by gijang_ReviewBoard_Idx desc -->
+<!-- 	</select> -->
+	
+	<select id="selectOrderListJoinReviewBoard" parameterType="paging" resultType="review">
+		select * from (
+    		select rownum as r, a.* from (
+        		select q.gijang_OrderList_ProductName as gijang_ReviewBoard_productName, w.* 
+        			from
+            			gijang_OrderList q
+            			join gijang_ReviewBoard w 
+            			on q.gijang_OrderList_Idx = w.gijang_ReviewBoard_OrderListIdx
+            			where q.gijang_OrderList_Idx = w.gijang_ReviewBoard_OrderListIdx
+                		order by w.gijang_ReviewBoard_Idx desc
+            ) a
+        ) where r between ${start} and ${end}
+	</select>
+	
+	<select id="selectOneByIdx" parameterType="int" resultType="review">
+		select * from
+			gijang_ReviewBoard
+				where gijang_ReviewBoard_Idx = ${gijang_ReviewBoard_Idx}
+	</select>
+	
+	<select id="countBoard" resultType="int">
+		select count(*)
+			from gijang_ReviewBoard
+	</select>
+	
+	<select id="productNameSearchCountBoard" parameterType="string" resultType="int">
+		select count(a.gijang_OrderList_ProductName)
+			from gijang_OrderList a
+			join gijang_ReviewBoard b
+			on a.gijang_OrderList_Idx = b.gijang_ReviewBoard_OrderListIdx
+			where a.gijang_OrderList_ProductName like '%' || #{keyword} || '%'
+	</select>
+	
+	<select id="writerSearchCountBoard" parameterType="string" resultType="int">
+		select count(b.gijang_ReviewBoard_Writer)
+			from gijang_OrderList a
+			join gijang_ReviewBoard b
+			on a.gijang_OrderList_Idx = b.gijang_ReviewBoard_OrderListIdx
+			where b.gijang_ReviewBoard_Writer like '%' || #{keyword} || '%'
+	</select>
+	
+	<select id="productSearchList" parameterType="paging" resultType="review">
+		select 
+    		a.gijang_OrderList_ProductName as gijang_ReviewBoard_ProductName, b.*
+        		from gijang_OrderList a
+        	join gijang_ReviewBoard b
+        	on a.gijang_OrderList_Idx = b.gijang_ReviewBoard_OrderListIdx
+        		where a.gijang_OrderList_ProductName like '%' || #{keyword} || '%'
+        	order by b.gijang_ReviewBoard_Idx desc
+	</select>
+	
+	<select id="writerSearchList" parameterType="paging" resultType="review">
+		select 
+    		a.gijang_OrderList_ProductName as gijang_ReviewBoard_ProductName, b.*
+        		from gijang_OrderList a
+        	join gijang_ReviewBoard b
+        	on a.gijang_OrderList_Idx = b.gijang_ReviewBoard_OrderListIdx
+        		where b.gijang_ReviewBoard_Writer like '%' || #{keyword} || '%'
+        	order by b.gijang_ReviewBoard_Idx desc
+	</select>
+	
+	<insert id="insertReviewComment" parameterType="reviewComment">
+		insert into gijang_ReviewComment
+			(gijang_ReviewComment_ReviewBoardIdx, gijang_ReviewComment_Writer, gijang_ReviewComment_Content)
+		values
+			(${gijang_ReviewComment_ReviewBoardIdx}, #{gijang_ReviewComment_Writer}, #{gijang_ReviewComment_Content})
+	</insert>
+	
+	<select id="selectReviewCommentList" parameterType="int" resultType="reviewComment">
+		select * from
+			gijang_ReviewComment
+				where gijang_ReviewComment_ReviewBoardIdx = #{gijang_ReviewBoard_Idx}
+			order by gijang_ReviewComment_Idx desc
+	</select>
+	
+	<update id="reviewOneDelete" parameterType="int">
+		update gijang_ReviewBoard
+			set gijang_ReviewBoard_IsDelete = 'Y'
+				where gijang_ReviewBoard_Idx = ${gijang_ReviewBoard_Idx}
+	</update>
+	
+	<update id="reviewOneModify" parameterType="review">
+		update gijang_ReviewBoard
+			set 
+				gijang_ReviewBoard_Title = #{gijang_ReviewBoard_Title},
+				gijang_ReviewBoard_Content = #{gijang_ReviewBoard_Content},
+				gijang_ReviewBoard_Grade = #{gijang_ReviewBoard_Grade},
+				gijang_ReviewBoard_FileName = #{gijang_ReviewBoard_FileName}
+			where
+				gijang_ReviewBoard_Idx = ${gijang_ReviewBoard_Idx}
+	</update>
+	
+</mapper>

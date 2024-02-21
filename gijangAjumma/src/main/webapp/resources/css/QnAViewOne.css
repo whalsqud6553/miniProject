@@ -1,0 +1,58 @@
+.QnATitle > h2 {
+	padding: 0;
+	margin: 0;
+	padding-top: 30px;
+}
+.QnATitle {
+	border-top: 2px solid black;
+	border-bottom: 1px solid #ccc;
+}
+.QnATitle > p {
+	padding: 10px 0;
+	padding-bottom: 20px;
+	color: gray;
+	font-size: 14px;
+}
+.QnAContent {
+	width: 1250px;
+	margin: auto;
+	margin-top: 40px;
+	min-height: 500px;
+}
+.QnABtn {
+	margin: 30px 0;
+	text-align: right;
+}
+.QnABtn > a:hover {
+	text-decoration: underline;
+}
+.QnAComment > h2 {
+	margin: 0;
+	border-bottom: 1px solid #ccc;
+	padding: 20px 0;
+}
+.commentBox > form > textarea {
+	width: 1220px;
+	height: 100px;
+}
+.commentArea {
+	border-bottom: 1px solid #ccc;
+}
+.commentArea_content {
+	width: 400px;
+	padding: 10px 0;
+}
+.commentArea_content > h4 {
+	padding: 0;
+	margin: 0;
+}
+.commentArea_content > p:nth-child(2) {
+	padding: 8px 0;
+}
+.commentArea_content > p:nth-child(3) {
+	font-size: 14px;
+	color: darkgray;
+}
+.QnAComment {
+	margin-bottom: 100px;
+}

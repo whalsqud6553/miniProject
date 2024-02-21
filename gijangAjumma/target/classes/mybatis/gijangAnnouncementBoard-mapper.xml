@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+		"//mybatis.org//DTD Mapper 3.0//EN" 
+		"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+		
+<mapper namespace="com.miniproject.repository.GijangAnnouncementBoardDAO">
+	<select id="selectAnnouncementList" resultType="announcementboard">
+		select * from
+			gijang_announcementBoard
+				order by gijang_AnnouncementBoard_Idx desc
+	</select>
+	
+	<insert id="insertAnnouncementBoard" parameterType="announcementboard">
+		insert into gijang_announcementBoard
+			(gijang_AnnouncementBoard_Title, gijang_AnnouncementBoard_Writer, gijang_AnnouncementBoard_Content)
+				values
+			(#{gijang_AnnouncementBoard_Title}, #{gijang_AnnouncementBoard_Writer}, #{gijang_AnnouncementBoard_Content})
+	</insert>
+	
+	<select id="selectById" parameterType="int" resultType="announcementboard">
+		select * from
+			gijang_announcementBoard
+				where gijang_AnnouncementBoard_Idx = ${gijang_AnnouncementBoard_Idx}
+	</select>
+	
+	<delete id="announcementDelete" parameterType="int">
+		delete gijang_AnnouncementBoard
+			where
+				gijang_AnnouncementBoard_Idx = ${gijang_AnnouncementBoard_Idx}
+	</delete>
+	
+	<update id="announcementModify" parameterType="announcementboard">
+		update gijang_AnnouncementBoard 
+			set gijang_AnnouncementBoard_Title = #{gijang_AnnouncementBoard_Title}, 
+				gijang_AnnouncementBoard_Content = #{gijang_AnnouncementBoard_Content}
+			where gijang_AnnouncementBoard_Idx = #{gijang_AnnouncementBoard_Idx}
+	</update>
+	
+	<select id="countBoard">
+		select count(*) from gijang_AnnouncementBoard
+	</select>
+	
+	<select id="selectAnnouncementListPaging" parameterType="paging" resultType="announcementboard">
+		select * from (
+			select rownum as r, a.* from (
+				select * from gijang_AnnouncementBoard
+					order by gijang_AnnouncementBoard_Idx desc) a)
+						where r between ${start} and ${end}
+	</select>
+</mapper>

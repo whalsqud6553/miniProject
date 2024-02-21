@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+		"//mybatis.org//DTD Mapper 3.0//EN" 
+		"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+		
+<mapper namespace="com.miniproject.repository.GijangQnABoardDAO">
+	
+	<insert id="insertQnA" parameterType="qnaboard">
+		insert into gijang_qnaBoard
+			(gijang_QnABoard_Title, gijang_QnABoard_Writer, gijang_QnABoard_Content)
+				values
+			(#{gijang_QnABoard_Title}, #{gijang_QnABoard_Writer}, #{gijang_QnABoard_Content})
+	</insert>
+	
+	<select id="selectQnAList" resultType="qnaboard">
+		select * from
+			gijang_qnaBoard
+				order by gijang_QnABoard_Idx desc
+	</select>
+	
+	<select id="selectQnAOneByIdx" parameterType="int" resultType="qnaboard">
+		select * from
+			gijang_qnaBoard
+				where gijang_QnABoard_Idx = ${gijang_QnABoard_Idx}
+	</select>
+	
+	<insert id="insertComment" parameterType="comment">
+		insert into gijang_QnAComment
+			(gijang_QnAComment_QnABoardIdx, gijang_QnAComment_Writer, gijang_QnAComment_Content)
+				values
+			(${gijang_QnAComment_QnABoardIdx}, #{gijang_QnAComment_Writer}, #{gijang_QnAComment_Content})
+	</insert>
+	
+	<select id="selectComment" parameterType="int" resultType="comment">
+		select
+    		a.*
+		        from gijang_qnacomment a
+		        join gijang_qnaBoard b
+		        on a.gijang_qnacomment_qnaboardidx = b.gijang_qnaBoard_Idx
+		        where a.gijang_QnAComment_QnABoardIdx = ${gijang_QnABoard_Idx}
+	</select>
+	
+	<update id="updateIsAnswer" parameterType="int">
+		update gijang_QnABoard
+			set gijang_QnABoard_IsAnswer = 'Y'
+			where gijang_QnABoard_Idx = ${gijang_QnABoard_Idx}
+	</update>
+	
+	<select id="countBoard" resultType="int">
+		select count(*)
+			from gijang_qnaBoard
+	</select>
+	
+	<select id="selectQnaListPaging" parameterType="paging" resultType="qnaboard">
+		select * from (
+			select rownum as r, a.* from (
+				select * from gijang_QnABoard
+					order by gijang_QnABoard_Idx desc) a)
+						where r between ${start} and ${end}
+	</select>
+	
+	<select id="titleSearchCount" parameterType="string" resultType="int">
+		select count(*)
+			from gijang_QnABoard
+				where gijang_QnABoard_Title like '%' || #{keyword} || '%'
+	</select>
+	
+	<select id="writerSearchCount" parameterType="string" resultType="int">
+		select count(*)
+			from gijang_QnABoard
+				where gijang_QnABoard_Writer like '%' || #{keyword} || '%'
+	</select>
+	
+	<select id="titleSearchList" parameterType="paging" resultType="qnaboard">
+		select * from (
+			select rownum as r, a.* from (
+				select * from gijang_QnABoard
+				where gijang_QnABoard_Title like '%' || #{keyword} || '%'
+				order by gijang_QnABoard_Idx desc) a)
+		where r between ${start} and ${end}
+	</select>
+	
+	<select id="writerSearchList" parameterType="paging" resultType="qnaboard">
+		select * from (
+			select rownum as r, a.* from (
+				select * from gijang_QnABoard
+				where gijang_QnABoard_Writer like '%' || #{keyword} || '%'
+				order by gijang_QnABoard_Idx desc) a)
+		where r between ${start} and ${end}
+	</select>
+</mapper>

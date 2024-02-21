@@ -1,0 +1,18 @@
+.individualProduct {
+	margin: 50px 0;
+}
+.individualAddForm > form > p > input {
+	width: 300px;
+	padding: 10px 20px;
+	background-color: #83ccc5;
+	border: none;
+	border-radius: 5px;
+	font-weight: bold;
+	margin-bottom: 100px;
+}
+.individualAddForm > form > p > input:hover {
+	background-color: #364ea8;
+	cursor: pointer;
+	color: white;
+	font-weight: bold;	
+}

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+		"//mybatis.org//DTD Mapper 3.0//EN" 
+		"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+		
+<mapper namespace="com.miniproject.repository.GijangSaleBoardDAO">
+	<select id="selectAllList" resultType="saleboard">
+		select * from
+			gijang_saleBoard 
+				order by gijang_saleBoard_Idx asc
+	</select>
+	
+	<insert id="insertProduct" parameterType="saleboard">
+		insert into gijang_saleBoard
+			(gijang_SaleBoard_Title, gijang_SaleBoard_Price, gijang_SaleBoard_ImgFileName, gijang_SaleBoard_Type)
+				values
+			(#{gijang_SaleBoard_Title}, #{gijang_SaleBoard_Price}, #{gijang_SaleBoard_ImgFileName}, #{gijang_SaleBoard_Type})
+	</insert>
+	
+	<select id="selectOneByIdx" parameterType="int" resultType="saleboard">
+		select * from 
+			gijang_SaleBoard
+				where gijang_SaleBoard_Idx = ${gijang_SaleBoard_Idx}
+	</select>
+	
+	<delete id="deleteProductByIdx" parameterType="int">
+		delete gijang_SaleBoard
+			where gijang_SaleBoard_Idx = ${gijang_SaleBoard_Idx}
+	</delete>
+	
+	<update id="modifyProduct" parameterType="saleboard">
+		update gijang_SaleBoard
+			set gijang_SaleBoard_Title = #{gijang_SaleBoard_Title},
+				gijang_SaleBoard_Price = #{gijang_SaleBoard_Price},
+				gijang_SaleBoard_ImgFileName = #{gijang_SaleBoard_ImgFileName},
+				gijang_SaleBoard_Type = #{gijang_SaleBoard_Type}
+			where
+				gijang_SaleBoard_Idx = ${gijang_SaleBoard_Idx}
+	</update>
+	
+	<select id="banchanFishList" resultType="saleboard">
+		select * from gijang_SaleBoard
+        	where gijang_SaleBoard_Type = '반찬생선'
+        		order by gijang_SaleBoard_Idx desc
+        		
+	</select>
+	
+	<select id="jeasuyongFishList" resultType="saleboard">
+		select * from gijang_SaleBoard
+        	where gijang_SaleBoard_Type = '제수용생선'
+        		order by gijang_SaleBoard_Idx desc
+	</select>
+	
+	<select id="jeasuyongSeeFoodList" resultType="saleboard">
+		select * from gijang_SaleBoard
+        	where gijang_SaleBoard_Type = '제수용수산물'
+        		order by gijang_SaleBoard_Idx desc
+	</select>
+	
+	<insert id="insertProductDetailCommon" parameterType="detailCommon">
+		insert into productDetail_Common
+			(productDetail_ImgFileName1, productDetail_ImgFileName2, productDetail_ImgFileName3,
+			productDetail_ImgFileName4, productDetail_ImgFileName5, productDetail_ImgFileName6, productDetail_ImgFileName7, 
+			productDetail_ImgFileName8, productDetail_ImgFileName9, productDetail_ImgFileName10, productDetail_ImgFileName11, 
+			productDetail_ImgFileName12, productDetail_ImgFileName13, productDetail_ImgFileName14, productDetail_ImgFileName15, 
+			productDetail_ImgFileName16, productDetail_ImgFileName17, productDetail_ImgFileName18, productDetail_ImgFileName19,
+			productDetail_ImgFileName20, productDetail_ImgFileName21, productDetail_ImgFileName22, productDetail_ImgFileName23,
+			productDetail_ImgFileName24, productDetail_ImgFileName25, productDetail_ImgFileName26, productDetail_ImgFileName27)
+		values
+			(#{productDetail_ImgFileName1}, #{productDetail_ImgFileName2}, #{productDetail_ImgFileName3}, 
+			#{productDetail_ImgFileName4}, #{productDetail_ImgFileName5}, #{productDetail_ImgFileName6}, #{productDetail_ImgFileName7}, 
+			#{productDetail_ImgFileName8}, #{productDetail_ImgFileName9}, #{productDetail_ImgFileName10}, #{productDetail_ImgFileName11}, 
+			#{productDetail_ImgFileName12}, #{productDetail_ImgFileName13}, #{productDetail_ImgFileName14}, #{productDetail_ImgFileName15}, 
+			#{productDetail_ImgFileName16}, #{productDetail_ImgFileName17}, #{productDetail_ImgFileName18}, #{productDetail_ImgFileName19}, 
+			#{productDetail_ImgFileName20}, #{productDetail_ImgFileName21}, #{productDetail_ImgFileName22}, #{productDetail_ImgFileName23}, 
+			#{productDetail_ImgFileName24}, #{productDetail_ImgFileName25}, #{productDetail_ImgFileName26}, #{productDetail_ImgFileName27})
+	</insert>
+	
+	<select id="selectOneDetailCommon" resultType="detailCommon">
+		select * from 
+			productDetail_Common
+	</select>
+	
+	<insert id="insertProductDetailIndividual" parameterType="detailIndividual">
+		insert into productDetailIndividual
+			(productDetailIndividual_SaleBoard_Idx, productDetailIndividual_ImgFileName1, productDetailIndividual_ImgFileName2, 
+			productDetailIndividual_ImgFileName3, productDetailIndividual_ImgFileName4, productDetailIndividual_ImgFileName5, 
+			productDetailIndividual_ImgFileName6, productDetailIndividual_ImgFileName7, productDetailIndividual_ImgFileName8)
+		values
+			(${productDetailIndividual_SaleBoard_Idx}, #{productDetailIndividual_ImgFileName1}, #{productDetailIndividual_ImgFileName2}, 
+			#{productDetailIndividual_ImgFileName3}, #{productDetailIndividual_ImgFileName4}, #{productDetailIndividual_ImgFileName5}, 
+			#{productDetailIndividual_ImgFileName6}, #{productDetailIndividual_ImgFileName7}, #{productDetailIndividual_ImgFileName8})
+	</insert>
+	
+	<select id="selectOneDetailIndividual" parameterType="int" resultType="detailIndividual">
+		select * from
+			productDetailIndividual
+				where productDetailIndividual_SaleBoard_Idx = ${gijang_SaleBoard_Idx}
+	</select>
+</mapper>

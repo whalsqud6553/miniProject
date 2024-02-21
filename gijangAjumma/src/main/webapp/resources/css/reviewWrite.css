@@ -1,0 +1,57 @@
+.reviewProduct {
+	margin: 20px 0;
+}
+.reviewProduct {
+	justify-content: center;
+}
+.reviewProduct > h4 {
+	height: 100px;
+	padding-top: 17px;
+}
+.reviewProduct > img {
+	width: 100px;
+	height: 100px;
+	padding: 0 20px;
+}
+.revireWirteForm > form {
+	text-align: center;
+}
+.revireWirteForm > form > p {
+	margin: 20px 0;
+}
+.revireWirteForm > form > p:nth-child(1) > input {
+	width: 500px;
+	padding: 20px;
+	font-size: 20px;
+	border: none;
+	border-bottom: 2px solid #ccc;
+}
+.revireWirteForm > form > p:nth-child(2) > textarea {
+	padding: 20px;
+	width: 500px;
+	height: 500px;
+	font-size: 20px;
+}
+
+.revireWirteForm > form > p:last-child > input {
+	width: 300px;
+	padding: 10px 20px;
+	background-color: #83ccc5;
+	border: none;
+	border-radius: 5px;
+	font-weight: bold;
+}
+.revireWirteForm > form > p > select {
+	width: 300px;
+	padding: 20px;
+	font-size: 20px;
+	background-color: white;
+	border: none;
+	border-bottom: 2px solid #ccc;
+}
+.revireWirteForm > form > p:last-child > input:hover {
+	background-color: #364ea8;
+	cursor: pointer;
+	color: white;
+	font-weight: bold;
+}

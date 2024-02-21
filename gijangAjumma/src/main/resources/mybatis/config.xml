@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC 
+		"//mybatis.org/DTD Config 3.0//EN"
+		"https://mybatis.org/dtd/mybatis-3-config.dtd">
+		
+<configuration>
+	<settings>
+		<setting name="jdbcTypeForNull" value="NULL"/>
+	</settings>
+	<typeAliases>
+		<typeAlias type="com.miniproject.model.GijangMemberDTO" alias="member"/>
+		<typeAlias type="com.miniproject.model.GijangSaleBoardDTO" alias="saleboard"/>
+		<typeAlias type="com.miniproject.model.GijangQnABoardDTO" alias="qnaboard"/>
+		<typeAlias type="com.miniproject.model.GijangAnnouncementBoardDTO" alias="announcementboard"/>
+		<typeAlias type="com.miniproject.model.GijangQnACommentDTO" alias="comment"/>
+		<typeAlias type="com.miniproject.model.ProductDetailCommonDTO" alias="detailCommon"/>
+		<typeAlias type="com.miniproject.model.ProductDetailIndividualDTO" alias="detailIndividual"/>
+		<typeAlias type="com.miniproject.model.GijangOrderListDTO" alias="orderlist"/>
+		<typeAlias type="com.miniproject.model.GijangWishListDTO" alias="wishlist"/>
+		<typeAlias type="com.miniproject.model.PagingVO" alias="paging"/>
+		<typeAlias type="com.miniproject.model.GijangReviewBoardDTO" alias="review"/>
+		<typeAlias type="com.miniproject.model.GijangReviewCommentDTO" alias="reviewComment"/>
+	</typeAliases>
+</configuration>

@@ -1,0 +1,225 @@
+.datailProduct_frame {
+	width: 1020px;
+	margin: auto;
+}
+.adminBtn {
+	margin: 20px 0;
+}
+.adminBtn > button {
+	padding: 5px;
+	margin: 0 10px;
+}
+.product_buy {
+	margin: 40px 0;
+	margin-bottom: 0;
+}
+.product_img {
+	width: 510px;
+	text-align: center;
+	border: 1px solid #ccc;
+	border-right: none;
+}
+.product_img > img {
+	width: 360px;
+	height: 510px;
+}
+.buy_form {
+	width: 510px;
+	border: 1px solid #ccc;
+}
+.buy_frame {
+	width: 430px;
+	margin: auto;
+}
+.buy_frame > p:nth-child(2) {
+	text-align: right;
+	font-size: 2em;
+	font-weight: bold;
+	color: brown;
+}
+.product_Content {
+	margin: 30px 0;
+}
+.product_Content > ul {
+	text-align: center;
+}
+.selectBar {
+	margin: 30px 0;
+	text-align: center;
+}
+.selectBar > select {
+	width: 300px;
+	padding: 10px;
+	background-color: white;
+	border: none;
+	border: 1px solid #ccc;
+}
+.totalPriceForm {
+	justify-content: space-between;
+	margin: 30px 0;
+}
+.totalLeft {
+	font-weight: bold;
+	padding-top: 5px;
+}
+.totalRight > p:first-child {
+	padding-top: 5px;
+}
+.totalRight > p:nth-child(2) {
+	padding: 5px 10px;
+}
+.totalRightPrice {
+	font-size: 1.5em;
+	font-weight: bold;
+	color: brown;
+}
+.sizePrice {
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	padding: 20px;
+	display: flex;
+	justify-content: space-between;
+}
+.countUpDown {
+	display: flex;
+}
+.minus {
+	font-size: 1.7em;
+}
+.minus:hover {
+	cursor: pointer;
+}
+.plus {
+	font-size: 1.7em;
+}
+.plus:hover {
+	cursor: pointer;
+}
+.upDownTotalNum {
+	font-size: 1.7em;
+	padding: 0 15px;
+}
+.deleteProductBtn {
+	text-align: center;
+	padding: 10px 0;
+	font-weight: lighter;
+	cursor: pointer;
+}
+.fishPrice {
+	font-weight: bold;
+}
+.buyBtnForm {
+	margin: 30px 0;
+}
+.buyBtn {
+	text-align: center;
+}
+.buyBtn > button {
+	width: 390px;
+	padding: 20px;
+	border: none;
+	background: #83ccc5;
+	cursor: pointer;
+	transition: 0.5s;
+	font-size: 1.2em;
+	font-weight: bold;
+}
+.buyBtn > button:hover {
+	background: #364ea8;
+	transition: 0.5s;
+}
+#paymentModal {
+	width: 1000px;
+	height: 700px;
+}
+.paymentForm {
+	width: 900px;
+}
+.paymentForm > form > p:nth-child(2) > input, .paymentForm > form > p:nth-child(4) > input {
+	padding: 10px;
+	font-size: 1.2em;
+	margin: 5px 0;
+}
+.paymentForm > form > p:nth-child(6) > input {
+	padding: 10px;
+	font-size: 1.2em;
+}
+.paymentForm > form > p:nth-child(7) > input {
+	width: 500px;
+	padding: 10px;
+	font-size: 1.2em;
+	margin: 5px 0;
+}
+.paymentForm > form > p:nth-child(8) > input {
+	padding: 10px;
+	font-size: 1.2em;
+}
+.closeModal {
+	text-align: right;
+	font-size: 1.5em;
+	cursor: pointer;
+}
+.paymentProduct {
+	display: flex;
+	margin: 10px 0;
+}
+.paymentProduct > p {
+	padding: 0 10px;
+	font-size: 1.2em;
+}
+.paymentProduct > p:first-child {
+	width: 400px;
+}
+.paymentProduct > p:nth-child(2) {
+	width: 80px;
+}
+.paymentProduct > p:nth-child(3) {
+	width: 120px;
+	text-align: right;
+}
+.totalCountPrice {
+	display: flex;
+	margin: 30px 0;
+}
+.totalCountPrice > p {
+	padding: 0 10px;
+	font-size: 1.5em;
+	font-weight: bold;
+}
+.paymentCheckBoxForm {
+	margin: 50px 0;
+}
+#kakaoPayBtn {
+	text-align: center;
+	width: 300px;
+	padding: 20px;
+	font-size: 1.5em;
+	font-weight: bold;
+	background-color: #ffe500;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: 0.3s;	
+}
+#kakaoPayBtn:hover {
+	background-color: #ffbe00;
+	transition: 0.3s;
+}
+.wishListBtnForm {
+	text-align: right;
+	margin-top: 10px;
+}
+#wishListAddBtn {
+	border: none;
+	background-color: white;
+	margin: 0;
+	padding: 0;
+	cursor: pointer;
+}
+#wishListAddBtn > h3 {
+	margin: 0;
+	padding: 0;
+}
+#wishListAddBtn > h3:hover {
+	color: #83ccc5;
+}

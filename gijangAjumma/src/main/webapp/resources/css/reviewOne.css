@@ -1,0 +1,52 @@
+.reviewOneTitle > h2 {
+	padding: 0;
+	margin: 0;
+	padding-top: 30px;
+}
+.reviewOneTitle {
+	border-top: 2px solid black;
+	border-bottom: 1px solid #ccc;
+}
+.reviewOneTitle > p {
+	padding: 8px 0;
+	color: gray;
+	font-size: 14px;
+}
+.reviewOneTitle > p:last-child {
+	padding-bottom: 20px;
+}
+.reviewOneContent {
+	width: 1250px;
+	margin: auto;
+	margin-top: 40px;
+	min-height: 500px;
+}
+.reviewOneBtn {
+	margin: 30px 0;
+	justify-content: space-between;
+}
+.reviewOneBtn > .reviewOneDelModiBtn > button {
+	padding: 10px;
+	background-color: white;
+	cursor: pointer;
+	border-radius: 5px;
+	font-weight: bold;
+}
+.reviewOneBtn > .reviewOneDelModiBtn > button:hover {
+	background-color: #e9e9ed;
+}
+.reviewOneBtn > .reviewOneListBtn > a:hover {
+	text-decoration: underline;
+}
+.reviewOneComment > h2 {
+	margin: 0;
+	border-bottom: 1px solid #ccc;
+	padding: 20px 0;
+}
+.reviewOneImg {
+	text-align: center;
+	margin-top: 50px;
+}
+.reviewOneComment {
+	margin-bottom: 100px;
+}

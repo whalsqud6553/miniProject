@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xsi:schemaLocation="http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	
+	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+		<property name="jdbcUrl" value="jdbc:oracle:thin:@192.168.1.100:1521:xe" />
+		<property name="username" value="c##minbyeong" />
+		<property name="password" value="1234" />
+	</bean>
+	
+	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource">
+		<constructor-arg ref="hikariConfig" />
+	</bean>
+		
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		
+		<!-- mybatis xml mapper를 사용하기 위한 설정 -->
+		<!-- 0) classpath : { "src/main/java", src/main/resources" } -->
+		<!-- 1) configLocation : 마이바티스 주요 메인 설정을 저장하는 파일의 위치 -->
+		
+		<property name="configLocation" value="classpath:mybatis/config.xml" />
+				
+		<!-- 2) mapperLocations : 각 interface mapper(DAO)에 대응되는 xml의 위치들을 지정 -->
+
+ 		<property name="mapperLocations">
+			<list>
+				<value>classpath:mybatis/gijangMember-mapper.xml</value>
+				<value>classpath:mybatis/gijangSaleBoard-mapper.xml</value>
+				<value>classpath:mybatis/gijangQnABoard-mapper.xml</value>
+				<value>classpath:mybatis/gijangAnnouncementBoard-mapper.xml</value>
+				<value>classpath:mybatis/gijangOrderList-mapper.xml</value>
+				<value>classpath:mybatis/gijangReviewBoard-mapper.xml</value>
+			</list>
+		</property>
+	<!-- ================================ -->
+	</bean>
+		
+	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSessionFactory" />
+	</bean>
+	
+	<!-- 
+	지정한 패키지 내부의 interface를 찾아서 실제 SQL을 수행할 수 있는 프록시(proxy, 대리자)
+	객체를 생성한 후, 스프링 빈으로 등록하는 과정을 수행하게 된다
+ 	-->
+ 	
+ 	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+ 		<property name="host" value="smtp.naver.com" />
+ 		<property name="port" value="465" />
+ 		<property name="username" value="whalsqud6553" />
+ 		<property name="password" value="@Wh10670159" />
+ 		<property name="javaMailProperties">
+ 			<props>
+ 				<prop key="mail.smtp.auth">true</prop>
+ 				<!-- gmail의 경우 보안문제 업데이트로 인해 SSLSocketFactory를 추가해야 smtp 사용 가능 -->
+ 				<prop key="mail.smtp.starttls.enable">true</prop>
+ 				<prop key="mail.debug">true</prop>
+ 				<prop key="mail.smtp.ssl.trust">*</prop>
+ 				<prop key="mail.smtp.ssl.protocols">TLSv1.2</prop>
+ 				<prop key="mail.smtp.socketFactory.class">javax.net.ssl.SSLSocketFactory</prop>
+ 			</props>
+ 		</property>
+ 	</bean>
+ 	
+ 	
+	<mybatis-spring:scan base-package="com.miniproject.repository" />
+	<context:component-scan base-package="com.miniproject.component" />
+	<context:component-scan base-package="com.miniproject.service" />
+	
+</beans>

@@ -1,0 +1,51 @@
+#myInfoModify_form > h1 {
+	text-align: center;
+	color: #ccc;
+}
+#myInfoModify_form > form {
+	width: 500px;
+	margin: auto;
+}
+#myInfoModify_form > form > p {
+	margin: 10px 0;	
+}
+#myInfoModify_form > form > p > input {
+	width: 300px;
+	padding: 10px;
+}
+#myInfoModify_form > form > input {
+	margin: 3px 0;
+	padding: 10px;
+}
+#modifyBtn {
+	width: 324px;
+	height: 40px;
+	font-weight: bold;
+	border: none;
+	transition : 0.5s;
+	background-color: #83ccc5;
+	cursor: pointer;
+}
+#modifyBtn:hover {
+	background-color: #364ea8;
+}
+.pwModify:hover {
+	text-decoration: underline;
+}
+.pwModifyForm {
+	margin-top: 100px;
+	text-align: center;
+}
+.pwModifyForm > form > p {
+	margin: 10px 0;
+}
+.pwModifyForm > form > p > input {
+	padding: 15px;
+	width: 200px;
+}
+.pwModifyForm > form > p:last-child > input {
+	border: none;
+	cursor: pointer;
+	font-weight: bold;
+	border-radius: 5px;
+}

@@ -1,0 +1,33 @@
+.QnAWrite_form > form {
+	text-align: center;
+}
+.QnAWrite_form > form > p {
+	margin: 20px 0;
+}
+.QnAWrite_form > form > p:nth-child(1) > input {
+	width: 500px;
+	padding: 20px;
+	font-size: 20px;
+	border: none;
+	border-bottom: 2px solid #ccc;
+}
+.QnAWrite_form > form > p:nth-child(2) > textArea {
+	padding: 20px;
+	width: 500px;
+	height: 500px;
+	font-size: 20px;
+}
+.QnAWrite_form > form > p:nth-child(3) > input {
+	width: 300px;
+	padding: 10px 20px;
+	background-color: #83ccc5;
+	border: none;
+	border-radius: 5px;
+	font-weight: bold;
+}
+.QnAWrite_form > form > p:nth-child(3) > input:hover {
+	background-color: #364ea8;
+	cursor: pointer;
+	color: white;
+	font-weight: bold;
+}

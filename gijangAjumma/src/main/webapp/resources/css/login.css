@@ -1,0 +1,43 @@
+#login_form > h1 {
+	text-align: center;
+	color: #ccc;
+}
+.login_box > form > p {
+	text-align: center;
+}
+.login_box > form > p > input {
+	width: 500px;
+	padding: 20px 0px;
+	font-size: 20px;
+}
+.login_box > form > p:first-child > input {
+	border: none;
+	border-bottom: 2px solid #83ccc5;
+}
+.login_box > form > p:nth-child(2) > input {
+	border: none;
+	border-bottom: 2px solid #83ccc5;
+}
+.login_box > form > p:last-child {
+	margin-top: 10px;
+	margin-bottom: 20px;
+}
+.login_box > form > p:last-child > input {
+	font-size: 20px;
+	font-weight: bold;
+	background-color: #83ccc5;
+	border: none;
+	transition : 0.5s;
+}
+.login_box > form > p:last-child > input:hover {
+	cursor: pointer;
+	background-color: #364ea8;
+	transition : 0.5s;
+}
+.login_box > p:nth-child(2) {
+	text-align: center;
+}
+.login_box > p:nth-child(2):hover {
+	text-decoration: underline;
+	color: brown;
+}

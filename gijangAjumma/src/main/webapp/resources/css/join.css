@@ -1,0 +1,50 @@
+#join_form > h1 {
+	text-align: center;
+	color: #ccc;
+}
+#join_form > form {
+	width: 500px;
+	margin: auto;
+}
+#join_form > form > p {
+	margin: 10px 0;	
+}
+#join_form > form > p:nth-child(2) > input:last-child {
+	width: 150px;
+	font-weight: bold;
+	background-color: #83ccc5;
+	border: none;
+	transition : 0.5s;
+}
+#join_form > form > p:nth-child(2) > input:last-child:hover {
+	cursor: pointer;
+	background-color: #364ea8;
+	transition : 0.5s;
+}
+#join_form > form > p > input {
+	width: 300px;
+	padding: 10px;
+}
+#join_form > form > input {
+	margin: 3px 0;
+	padding: 10px;
+}
+#join_form > form > p:nth-child(7) > input:last-child {
+	width: 150px;
+	font-weight: bold;
+	background-color: #83ccc5;
+	border: none;
+	transition : 0.5s;
+}
+#join_form > form > p:nth-child(7) > input:last-child:hover {
+	cursor: pointer;
+	background-color: #364ea8;
+	transition : 0.5s;
+}
+#joinBtn {
+	width: 324px;
+	height: 40px;
+	font-weight: bold;
+	border: none;
+	transition : 0.5s;
+}

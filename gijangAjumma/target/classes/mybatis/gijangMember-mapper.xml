@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+		"//mybatis.org//DTD Mapper 3.0//EN"
+		"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+		
+<mapper namespace="com.miniproject.repository.GijangMemberDAO">
+	<select id="selectOneById" resultType="member" parameterType="string">
+		select * from gijang_Member
+			where gijang_Member_UserId = #{textUserId}
+	</select>
+	
+	<insert id="joinMember" parameterType="member">
+		insert into gijang_Member
+			(gijang_Member_UserName, gijang_Member_UserId, gijang_Member_Userpw, gijang_Member_Salt , gijang_Member_Email, gijang_Member_Pnum, 
+			gijang_Member_Birth, gijang_Member_Zipcode, gijang_Member_Address, gijang_Member_DetailAddress, gijang_Member_ExtraAddress)
+			values 
+			(#{gijang_Member_UserName}, #{gijang_Member_UserId}, #{gijang_Member_Userpw}, #{gijang_Member_Salt} ,#{gijang_Member_Email}, 
+			#{gijang_Member_Pnum}, #{gijang_Member_Birth}, #{gijang_Member_Zipcode}, #{gijang_Member_Address}, #{gijang_Member_DetailAddress}, 
+			#{gijang_Member_ExtraAddress}) 
+	</insert>
+	
+	<delete id="deleteMember" parameterType="int">
+		delete gijang_Member
+			where gijang_Member_Idx = ${gijang_Member_Idx}
+	</delete>
+	
+	<insert id="insertWishList" parameterType="wishlist">
+		insert into gijang_WishList
+			(gijang_WishList_SaleBoardIdx, gijang_WishList_UserId)
+		values
+			(#{gijang_WishList_SaleBoardIdx}, #{gijang_WishList_UserId})
+	</insert>
+	
+	<select id="selectWishListDuplicationCheck" parameterType="wishlist" resultType="wishlist">
+		select
+			*
+				from gijang_WishList
+			where
+				gijang_WishList_SaleBoardIdx = ${gijang_WishList_SaleBoardIdx}
+			and
+				gijang_WishList_UserId = #{gijang_WishList_UserId}
+	</select>
+	
+	<select id="selectWishList" parameterType="string" resultType="saleboard">
+		select
+    		a.*
+        		from gijang_SaleBoard a
+        		join gijang_WishList b
+    		on a.gijang_SaleBoard_Idx = b.gijang_WishList_SaleBoardIdx
+    			where b.gijang_WishList_UserId= #{userId}
+   			 order by b.gijang_WishList_SaleBoardIdx desc
+	</select>
+	
+	<delete id="deleteWishList" parameterType="int">
+		delete gijang_WishList
+			where gijang_WishList_SaleBoardIdx = ${gijang_SaleBoard_Idx}
+	</delete>
+	
+	<update id="updateMember" parameterType="member">
+		update gijang_Member
+			set gijang_Member_UserName = #{gijang_Member_UserName},
+				gijang_Member_Pnum = #{gijang_Member_Pnum},
+				gijang_Member_Birth = #{gijang_Member_Birth},
+				gijang_Member_Zipcode = #{gijang_Member_Zipcode},
+				gijang_Member_Address = #{gijang_Member_Address},
+				gijang_Member_DetailAddress = #{gijang_Member_DetailAddress},
+				gijang_Member_ExtraAddress = #{gijang_Member_ExtraAddress}
+			where
+				gijang_Member_UserId = #{gijang_Member_UserId}
+	</update>
+	
+	<update id="updatePassword" parameterType="member">
+		update gijang_Member
+			set gijang_Member_Userpw = #{gijang_Member_Userpw}
+			where gijang_Member_UserId = #{gijang_Member_UserId}
+	</update>
+</mapper>

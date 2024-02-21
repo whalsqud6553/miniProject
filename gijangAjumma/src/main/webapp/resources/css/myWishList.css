@@ -1,0 +1,29 @@
+.wishList {
+	margin: 20px 0;
+}
+.wishListImg > a > img {
+	width: 300px;
+	height: 250px;
+}
+.wishListContent {
+	width: 700px;
+	height: 250px;
+}
+.wishListContent > ul {
+	padding: 20px;
+}
+.wishListContent > ul > li {
+	padding: 5px 0;
+}
+.wishListTitle {
+	font-weight: bold;
+}
+.wishListDeleteBtn {
+	margin-top: 30px;
+	font-weight: bold;
+	color: #83ccc5;
+	cursor: pointer;
+}
+.wishListDeleteBtn:hover {
+	color: #364ea8;
+}

@@ -1,0 +1,16 @@
+.productAdd_form > form > p {
+	margin: 10px 0;
+}
+.productAdd_form > form > p > input {
+	padding: 10px;
+}
+.productAdd_form > form > p:first-child > input {
+	width: 700px;
+}
+#required {
+	position: absolute;
+	top: 551px;
+	z-index: -100;
+	width: 2px;
+	height: 2px;
+}

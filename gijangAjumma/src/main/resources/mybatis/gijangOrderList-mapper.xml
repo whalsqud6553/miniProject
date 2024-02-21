@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+		"//mybatis.org//DTD Mapper 3.0//EN" 
+		"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+		
+<mapper namespace="com.miniproject.repository.GijangOrderListDAO">
+	<insert id="insertOrder" parameterType="orderlist">
+		insert into
+			gijang_orderlist
+		(gijang_OrderList_SaleBoardIdx, gijang_OrderList_UserId, gijang_OrderList_UserName, gijang_OrderList_Pnum, gijang_OrderList_ProductName, 
+		gijang_OrderList_ProductDetailName, gijang_OrderList_ProductDetailCount, gijang_OrderList_ProductDetailPrice, 
+		gijang_OrderList_TotalPrice, gijang_OrderList_ZipCode, gijang_OrderList_Address, gijang_OrderList_DetailAddress, 
+		gijang_OrderList_ExtraAddress)
+			values
+		(${gijang_OrderList_SaleBoardIdx}, #{gijang_OrderList_UserId}, #{gijang_OrderList_UserName}, #{gijang_OrderList_Pnum}, 
+		#{gijang_OrderList_ProductName}, #{gijang_OrderList_ProductDetailName}, ${gijang_OrderList_ProductDetailCount}, 
+		#{gijang_OrderList_ProductDetailPrice}, #{gijang_OrderList_TotalPrice}, #{gijang_OrderList_ZipCode}, #{gijang_OrderList_Address}, 
+		#{gijang_OrderList_DetailAddress}, #{gijang_OrderList_ExtraAddress})
+	</insert>
+	
+	<update id="updatePaymentStatus" parameterType="string">
+		update gijang_OrderList
+			set
+				gijang_OrderList_PaymentStatus = 'Y'
+			where gijang_OrderList_UserId = #{gijang_OrderList_UserId}
+			and
+			gijang_OrderList_PaymentStatus = 'N'
+	</update>
+	
+	<select id="selectOrderListById" parameterType="string" resultType="orderlist">
+		select * from
+			gijang_OrderList
+				where gijang_OrderList_UserId = #{userid} 
+					and 
+				gijang_OrderList_PaymentStatus = 'Y'
+			order by
+				gijang_OrderList_Idx desc
+	</select>
+	
+	<select id="selectImgFileNameJoinSaleBoard" parameterType="string" resultType="saleboard">
+		select
+			a.*
+				from gijang_SaleBoard a
+				join gijang_OrderList b
+			on a.gijang_SaleBoard_Idx = b.gijang_OrderList_SaleBoardIdx
+			where b.gijang_OrderList_UserId = #{userid}
+			order by b.gijang_OrderList_Idx desc
+	</select>
+	
+	<update id="updateIsReview" parameterType="int">
+		update gijang_OrderList
+			set gijang_OrderList_IsReview = 'Y'
+				where gijang_OrderList_Idx = ${gijang_OrderList_Idx}
+	</update>
+</mapper>
